@@ -1,6 +1,6 @@
 ﻿using PathfinderLogger;
 
-DayOfWeek weekDay = DayOfWeek.Thursday;
+DayOfWeek weekDay = DayOfWeek.Friday;
 string message = "Some text";
 string fileName = "log.txt";
 FileLogWritter fileLogger = new FileLogWritter(fileName);
@@ -9,7 +9,7 @@ Pathfinder pathfinderFile = new Pathfinder(fileLogger);
 Pathfinder pathfinderConsole = new Pathfinder(consoleLogger);
 Pathfinder pathfinderWeekDayFile = new Pathfinder(new SecureWritter(weekDay, fileLogger));
 Pathfinder pathfinderWeekDayConsole = new Pathfinder(new SecureWritter(weekDay, consoleLogger));
-Pathfinder pathfinderWeekDayFileConsole = new Pathfinder(new SecureWritter(weekDay));
+Pathfinder pathfinderWeekDayFileConsole = new Pathfinder(new SecureWritter(weekDay, fileLogger, consoleLogger));
 
 pathfinderFile.Find(message);
 pathfinderConsole.Find(message);
