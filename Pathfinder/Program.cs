@@ -9,12 +9,12 @@ Pathfinder pathfinderFile = new Pathfinder(fileLogger);
 Pathfinder pathfinderConsole = new Pathfinder(consoleLogger);
 Pathfinder pathfinderWeekDayFile = new Pathfinder(new SecureWritter(weekDay, fileLogger));
 Pathfinder pathfinderWeekDayConsole = new Pathfinder(new SecureWritter(weekDay, consoleLogger));
-Pathfinder pathfinderWeekDayFileConsole = new Pathfinder(new SecureWritter(weekDay, fileLogger, consoleLogger));
+Pathfinder pathfinderConsoleWeekDayFile = new Pathfinder(new ConsoleLogWritter(new SecureWritter(weekDay, fileLogger)));
 
 pathfinderFile.Find(message);
 pathfinderConsole.Find(message);
 pathfinderWeekDayFile.Find(message);
 pathfinderWeekDayConsole.Find(message);
-pathfinderWeekDayFileConsole.Find(message);
+pathfinderConsoleWeekDayFile.Find(message);
 
 Console.ReadKey();
