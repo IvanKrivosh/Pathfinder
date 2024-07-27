@@ -10,7 +10,7 @@ Pathfinder pathfinderFile = new Pathfinder(fileLogger);
 Pathfinder pathfinderConsole = new Pathfinder(consoleLogger);
 Pathfinder pathfinderWeekDayFile = new Pathfinder(weekdayFileLogger);
 Pathfinder pathfinderWeekDayConsole = new Pathfinder(new SecureWritter(weekDay, consoleLogger));
-Pathfinder pathfinderConsoleWeekDayFile = new Pathfinder(new GropingLogger(consoleLogger, weekdayFileLogger));
+Pathfinder pathfinderConsoleWeekDayFile = new Pathfinder(new GroupingLogger(consoleLogger, weekdayFileLogger));
 
 pathfinderFile.Find(message);
 pathfinderConsole.Find(message);

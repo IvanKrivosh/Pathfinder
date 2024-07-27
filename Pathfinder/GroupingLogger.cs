@@ -1,10 +1,10 @@
 ﻿namespace PathfinderLogger
 {
-    class GropingLogger : ILogger
+    class GroupingLogger : ILogger
     {
         private ILogger[] _loggers;
 
-        public GropingLogger(params ILogger[] loggers)
+        public GroupingLogger(params ILogger[] loggers)
         {
             ValidationLoggersArray(loggers);
 
