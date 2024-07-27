@@ -2,26 +2,22 @@
 {
     class SecureWritter : ILogger
     {
-        private ILogger[] _loggers;
-        private DayOfWeek _weekDay;
+        private readonly ILogger _logger;
+        private readonly DayOfWeek _weekDay;
 
-        public SecureWritter(DayOfWeek weekDay, params ILogger[] loggers)
+        public SecureWritter(DayOfWeek weekDay, ILogger logger)
         {
-            ArgumentNullException.ThrowIfNull(weekDay);            
-            ArgumentOutOfRangeException.ThrowIfZero(loggers.Length);            
+            ArgumentNullException.ThrowIfNull(weekDay);
+            ArgumentNullException.ThrowIfNull(logger);
 
-            foreach (var logger in loggers)
-                ArgumentNullException.ThrowIfNull(logger);
-
-            _loggers = loggers;
+            _logger = logger;
             _weekDay = weekDay;
         }
 
         public void WriteError(string message)
         {
             if (DateTime.Now.DayOfWeek == _weekDay)
-                foreach (var logger in _loggers)
-                    logger.WriteError(message);
+                _logger.WriteError(message);
         }
     }
 }

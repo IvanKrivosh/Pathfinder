@@ -5,11 +5,12 @@ string message = "Some text";
 string fileName = "log.txt";
 FileLogWritter fileLogger = new FileLogWritter(fileName);
 ConsoleLogWritter consoleLogger = new ConsoleLogWritter();
+SecureWritter weekdayFileLogger = new SecureWritter(weekDay, fileLogger);
 Pathfinder pathfinderFile = new Pathfinder(fileLogger);
 Pathfinder pathfinderConsole = new Pathfinder(consoleLogger);
-Pathfinder pathfinderWeekDayFile = new Pathfinder(new SecureWritter(weekDay, fileLogger));
+Pathfinder pathfinderWeekDayFile = new Pathfinder(weekdayFileLogger);
 Pathfinder pathfinderWeekDayConsole = new Pathfinder(new SecureWritter(weekDay, consoleLogger));
-Pathfinder pathfinderConsoleWeekDayFile = new Pathfinder(new ConsoleLogWritter(new SecureWritter(weekDay, fileLogger)));
+Pathfinder pathfinderConsoleWeekDayFile = new Pathfinder(new GropingLogger(consoleLogger, weekdayFileLogger));
 
 pathfinderFile.Find(message);
 pathfinderConsole.Find(message);
